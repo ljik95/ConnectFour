@@ -1,8 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Play from './play';
+import ConnectFour from './connectFour';
 import Homepage from './homepage';
 import Stats from './stats';
+import Instruction from './instruction';
+import NotFound from './notFound';
+import Pixelogic from './pixelogic';
 
 const Main = () => {
   return (
@@ -10,13 +13,19 @@ const Main = () => {
       <div id="mainPage">
         <nav>
           <Link to="/">HomePage</Link>
-          <Link to="/play">PLAY</Link>
+          <Link to="/instruction">Instructions</Link>
+          <Link to="/connectFour">ConnectFour</Link>
+          <Link to="/pixelogic">Pixelogic</Link>
+          <Link to="/tictactoe">TicTacToe</Link>
           <Link to="/stats">Stats</Link>
         </nav>
         <Switch>
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/play" component={Play} />
+          <Route exact path="/instruction" component={Instruction} />
+          <Route exact path="/connectFour" component={ConnectFour} />
           <Route exact path="/stats" component={Stats} />
+          <Route exact path="/pixelogic" component={Pixelogic} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>

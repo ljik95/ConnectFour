@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Table from './table';
 import store, { reset } from '../store';
 
-class Play extends Component {
+class ConnectFour extends Component {
   constructor () {
     super();
     this.state = store.getState();
@@ -41,4 +41,4 @@ class Play extends Component {
   }
 }
 
-export default Play;
+export default ConnectFour;

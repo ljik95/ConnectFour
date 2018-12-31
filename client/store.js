@@ -10,16 +10,30 @@ const initialState = {
   currentColor: 'red',
   winner: 'none',
   redWinCount: 0,
-  yellowWinCount: 0
+  yellowWinCount: 0,
+  grid4: Array(4).fill(Array(4).fill('')),
+  grid8: Array(8).fill(Array(8).fill('')),
+  grid12: Array(12).fill(Array(12).fill('')),
+  grid16: Array(16).fill(Array(16).fill('')),
+  grid20: Array(20).fill(Array(20).fill(''))
 };
 
+// ConnectFour
 const DROP = 'DROP';
 const RESET = 'RESET';
 const CHECK = 'CHECK';
 
-export const drop = (cellIndex) => ({ type: DROP, cellIndex })
+// Pixelogic
+const PAINT = 'PAINT';
+
+
+// ConnectFour
+export const drop = (cellIdx) => ({ type: DROP, cellIdx })
 export const reset = () => ({ type: RESET })
 export const check = () => ({ type: CHECK })
+
+// Pixelogic
+export const paint = (pixelGrid, rowIdx, cellIdx) => ({ type: PAINT, pixelGrid, rowIdx, cellIdx})
 
 function reducer (state = initialState, action) {
   switch (action.type) {
@@ -27,9 +41,9 @@ function reducer (state = initialState, action) {
       const newGrid = [...state.grid]
       let i = 5;
       while (i >= 0) {
-        if (newGrid[i][action.cellIndex] === '') {
+        if (newGrid[i][action.cellIdx] === '') {
           newGrid[i] = [...newGrid[i]];
-          newGrid[i][action.cellIndex] = state.currentColor;
+          newGrid[i][action.cellIdx] = state.currentColor;
           if (state.currentColor === 'red') {
             state.currentColor = 'yellow';
           } else {
@@ -51,6 +65,35 @@ function reducer (state = initialState, action) {
         state.yellowWinCount++;
       }
       return {...state, winner: checkWinner(state.grid)};
+
+    case PAINT:
+    const grid = action.pixelGrid;
+    const rowIdx = action.rowIdx;
+    const cellIdx = action.cellIdx;
+    const newPixGrid = [...grid];
+
+      if (newPixGrid[rowIdx][cellIdx] === '') {
+        newPixGrid[rowIdx] = [...newPixGrid[rowIdx]];
+        newPixGrid[rowIdx][cellIdx] = 'painted';
+      } else if (newPixGrid[rowIdx][cellIdx] === 'painted') {
+        newPixGrid[rowIdx] = [...newPixGrid[rowIdx]];
+        newPixGrid[rowIdx][cellIdx] = 'X';
+      } else if (newPixGrid[rowIdx][cellIdx] === 'X') {
+        newPixGrid[rowIdx] = [...newPixGrid[rowIdx]];
+        newPixGrid[rowIdx][cellIdx] = '';
+      }
+
+      if (newPixGrid.length === 4) {
+        return {...state, grid4: newPixGrid};
+      } else if (newPixGrid.length === 8) {
+        return {...state, grid8: newPixGrid};
+      } else if (newPixGrid.length === 12) {
+        return {...state, grid12: newPixGrid};
+      } else if (newPixGrid.length === 16) {
+        return {...state, grid16: newPixGrid};
+      } else if (newPixGrid.length === 20) {
+        return {...state, grid20: newPixGrid};
+      }
 
     default:
       return state;

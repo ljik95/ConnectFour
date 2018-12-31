@@ -39,7 +39,8 @@ nav {
 }
 
 nav a {
-  margin: 10px 20px 10px 20px;
+  color: white;
+  margin: 10px 15px 10px 15px;
 }
 
 nav a:visited {
@@ -65,6 +66,7 @@ td {
   width: 100px;
   background-color: rgb(99, 99, 99);
   transition: background-color 0.5s ease;
+  text-align: center;
 }
 
 .red {background-color: red;}
@@ -132,4 +134,27 @@ td {
 
 .winCount {
   font-size: 75px;
+}
+
+#instruction {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#notFound {
+  color: red;
+  text-align: center;
+  margin-top: 75px;
+  font-size: 75px;
+}
+
+.painted {
+  background-color: black;
+}
+
+.X:after {
+  content: "X";
+  font-size: 50px;
+  color: white;
 }
