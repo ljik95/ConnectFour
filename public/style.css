@@ -57,11 +57,12 @@ nav a:hover {
 }
 
 table {
-  margin-left:auto;
-  margin-right:auto;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-td {
+td#connectFour {
   height: 75px;
   width: 100px;
   background-color: rgb(99, 99, 99);
@@ -69,16 +70,48 @@ td {
   text-align: center;
 }
 
-.red {background-color: red;}
-.orange {background-color: orange;}
-.yellow {background-color: yellow;}
-.green {background-color: green;}
-.blue {background-color: blue;}
-.indigo {background-color: indigo;}
-.violet {background-color: violet;}
-.black {background-color: black;}
-.white {background-color: white;}
-.brown {background-color: brown;}
+td#grid5 {
+  height: 75px;
+  width: 100px;
+  background-color: rgb(99, 99, 99);
+  transition: background-color 0.5s ease;
+  text-align: center;
+}
+
+td#grid8 {
+  height: 50px;
+  width: 75px;
+  background-color: rgb(99, 99, 99);
+  transition: background-color 0.5s ease;
+  text-align: center;
+}
+
+td#grid10 {
+  height: 40px;
+  width: 60px;
+  background-color: rgb(99, 99, 99);
+  transition: background-color 0.5s ease;
+  text-align: center;
+}
+
+#connectFour.red {background-color: red;}
+#connectFour.yellow {background-color: yellow;}
+
+#white8 .white {
+  height: 50px;
+  width: 75px;
+  transition: background-color 0.5s ease;
+  text-align: center;
+  background-color: white;
+}
+
+#white10 .white {
+  height: 40px;
+  width: 60px;
+  transition: background-color 0.5s ease;
+  text-align: center;
+  background-color: white;
+}
 
 #resetButton {
   height: 50px;
@@ -149,12 +182,130 @@ td {
   font-size: 75px;
 }
 
-.painted {
+.stageComplete {
+  text-align: center;
+  font-size: 30px;
+}
+
+#grid5.painted {
   background-color: black;
 }
 
-.X:after {
+#grid8.painted {
+  background-color: black;
+}
+
+#grid10.painted {
+  background-color: black;
+}
+
+#grid5.X:after {
   content: "X";
   font-size: 50px;
   color: white;
 }
+
+#grid8.X:after {
+  content: "X";
+  font-size: 30px;
+  color: white;
+}
+
+#grid10.X:after {
+  content: "X";
+  font-size: 25px;
+  color: white;
+}
+
+#grid5-1:after {
+  content: "1 1";
+}
+
+#grid5-3:after {
+  content: "1 1";
+}
+
+#grid5-4:after {
+  content: "5";
+}
+
+td.white {
+  background-color: white;
+  height: 50px;
+  width: 75px;
+  transition: background-color 0.5s ease;
+  text-align: center;
+}
+
+#grid8-0:after {
+  content: "2 2";
+}
+
+#grid8-1:after {
+  content: "8";
+}
+
+#grid8-2:after {
+  content: "8";
+}
+
+#grid8-3:after {
+  content: "8";
+}
+
+#grid8-4:after {
+  content: "8";
+}
+
+#grid8-5:after {
+  content: "6";
+}
+
+#grid8-6:after {
+  content: "4";
+}
+
+#grid8-7:after {
+  content: "2";
+}
+
+#grid10-0:after {
+  content: "5";
+}
+
+#grid10-1:after {
+  content: "7";
+}
+
+#grid10-2:after {
+  content: "8";
+}
+
+#grid10-3:after {
+  content: "6 3";
+}
+
+#grid10-4:after {
+  content: "6";
+}
+
+#grid10-5:after {
+  content: "4";
+}
+
+#grid10-6:after {
+  content: "6";
+}
+
+#grid10-7:after {
+  content: "7";
+}
+
+#grid10-8:after {
+  content: "9";
+}
+
+#grid10-9:after {
+  content: "7";
+}
+

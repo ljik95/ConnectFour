@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import store from '../store';
-import Grid4 from './grid4';
+import Grid5 from './grid5';
+import Grid8 from './grid8';
 
 class Pixelogic extends Component {
   constructor () {
@@ -22,7 +23,7 @@ class Pixelogic extends Component {
   render () {
     return (
       <div>
-        <Grid4 />
+        <Grid5 />
       </div>
     )
   }

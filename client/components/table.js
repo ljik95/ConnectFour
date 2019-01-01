@@ -27,7 +27,7 @@ class Table extends Component {
                 <tr key={rowIdx}>
                   {row.map((cell, cellIdx) => {
                     return (
-                      <td key={cellIdx} className={grid[rowIdx][cellIdx]} value={cellIdx} onClick={() => {
+                      <td key={cellIdx} id="connectFour" className={grid[rowIdx][cellIdx]} value={cellIdx} onClick={() => {
                         store.dispatch(drop(cellIdx));
                         store.dispatch(check(grid));
                       }}></td>
