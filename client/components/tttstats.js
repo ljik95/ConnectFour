@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import store from '../store';
 import { Link } from 'react-router-dom';
 
-class Stats extends Component {
+class tttStats extends Component {
   constructor () {
     super();
     this.state = store.getState();
@@ -15,24 +15,24 @@ class Stats extends Component {
           <div id="playerRed">
             Player Red has won <br />
             <div className="winCount">
-              {this.state.redWinCount} <br />
+              {this.state.tttRedWinCount} <br />
             </div>
             times.
           </div>
           <div id="playerYellow">
             Player Yellow has won <br />
             <div className="winCount">
-              {this.state.yellowWinCount} <br />
+              {this.state.tttYellowWinCount} <br />
             </div>
             times.
           </div>
         </div>
         <div id="backToGame">
-          <Link to="/connectFour">Back To Game</Link>
+          <Link to="/tictactoe">Back To Game</Link>
         </div>
       </div>
     )
   }
 }
 
-export default Stats;
+export default tttStats;

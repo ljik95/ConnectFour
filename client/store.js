@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import { checkWinner, checkLine } from './helperFuncs';
+import { checkWinner, checkLine, tttcheckWinner, tttcheckLine } from './helperFuncs';
 
 const initialState = {
   grid:
@@ -16,7 +16,13 @@ const initialState = {
   grid10: Array(10).fill(Array(10).fill('')),
   grid16: Array(16).fill(Array(16).fill('')),
   grid20: Array(20).fill(Array(20).fill('')),
-  completed: false
+  completed: false,
+  tttGrid: Array(3).fill(Array(3).fill('')),
+  tttColor: 'red',
+  tttCompleted: false,
+  tttWinner: 'none',
+  tttRedWinCount: 0,
+  tttYellowWinCount: 0
 };
 
 // ConnectFour
@@ -30,6 +36,11 @@ const CHECK5 = 'CHECK5';
 const CHECK8 = 'CHECK8';
 const CHECK10 = 'CHECK10';
 
+// TicTacToe
+const TTTPAINT = 'TTTPAINT';
+const TTTCHECK = 'TTTCHECK';
+const TTTRESET = 'TTTRESET';
+
 // ConnectFour
 export const drop = (cellIdx) => ({ type: DROP, cellIdx })
 export const reset = () => ({ type: RESET })
@@ -40,6 +51,11 @@ export const paint = (pixelGrid, rowIdx, cellIdx) => ({ type: PAINT, pixelGrid, 
 export const check5 = () => ({ type: CHECK5 })
 export const check8 = () => ({ type: CHECK8 })
 export const check10 = () => ({ type: CHECK10 })
+
+// TicTacToe
+export const tttpaint = (tttGrid, rowIdx, cellIdx) => ({ type: TTTPAINT, tttGrid, rowIdx, cellIdx })
+export const tttcheck = () => ({ type: TTTCHECK })
+export const tttreset = () => ({ type: TTTRESET })
 
 function reducer (state = initialState, action) {
   switch (action.type) {
@@ -135,6 +151,37 @@ function reducer (state = initialState, action) {
       } else {
         return {...state, completed: false};
       }
+
+    case TTTPAINT:
+      const tttGrid = [...action.tttGrid];
+      const tttRowIdx = action.rowIdx;
+      const tttCellIdx = action.cellIdx;
+      const tttColor = state.tttColor;
+
+      if (state.tttWinner === 'none') {
+        if (tttGrid[tttRowIdx][tttCellIdx] === '') {
+          tttGrid[tttRowIdx] = [...tttGrid[tttRowIdx]];
+          tttGrid[tttRowIdx][tttCellIdx] = tttColor;
+          if (tttColor === 'red') {
+            return {...state, tttGrid: tttGrid, tttColor: 'yellow'};
+          } else {
+            return {...state, tttGrid: tttGrid, tttColor: 'red'};
+          }
+        }
+      }
+
+    case TTTCHECK:
+      if (tttcheckWinner(state.tttGrid) === 'red') {
+        state.tttRedWinCount++;
+      } else if (tttcheckWinner(state.tttGrid) === 'yellow') {
+        state.tttYellowWinCount++;
+      }
+      if (state.tttWinner === 'none') {
+        return {...state, tttWinner: tttcheckWinner(state.tttGrid)};
+      }
+
+    case TTTRESET:
+      return {...state, tttGrid: Array(3).fill(Array(3).fill('')), tttColor: 'red', tttWinner: 'none'};
 
     default:
       return state;

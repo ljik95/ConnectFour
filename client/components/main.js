@@ -8,6 +8,8 @@ import NotFound from './notFound';
 import Pixelogic from './pixelogic';
 import Grid8 from './grid8';
 import Grid10 from './grid10';
+import Tictactoe from './tictactoe';
+import tttStats from './tttstats';
 
 const Main = () => {
   return (
@@ -19,7 +21,6 @@ const Main = () => {
           <Link to="/connectFour">ConnectFour</Link>
           <Link to="/pixelogic">Pixelogic</Link>
           <Link to="/tictactoe">TicTacToe</Link>
-          <Link to="/stats">Stats</Link>
         </nav>
         <Switch>
           <Route exact path="/" component={Homepage} />
@@ -29,6 +30,8 @@ const Main = () => {
           <Route exact path="/pixelogic" component={Pixelogic} />
           <Route exact path="/pixelogic/stage2" component={Grid8} />
           <Route exact path="/pixelogic/stage3" component={Grid10} />
+          <Route exact path="/tictactoe" component={Tictactoe} />
+          <Route exact path="/tttstats" component={tttStats} />
           <Route component={NotFound} />
         </Switch>
       </div>

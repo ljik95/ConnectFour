@@ -114,8 +114,8 @@ td#grid10 {
 }
 
 #resetButton {
-  height: 50px;
-  width: 100px;
+  height: 45px;
+  width: 90px;
   font-size: 25px;
 }
 
@@ -141,7 +141,7 @@ td#grid10 {
   width: 400px;
 }
 
-#stats {
+#players {
   display: flex;
   height: 400px;
   width: 1000px;
@@ -149,6 +149,26 @@ td#grid10 {
   margin-right: auto;
   margin-left: auto;
   font-size: 50px;
+}
+
+#backToGame {
+  text-align: center;
+  font-size: 35px;
+}
+
+#stats {
+  font-size: 25px;
+  width: 150px;
+  background-color: white;
+  border-color: rgb(194, 194, 194);
+  border-style: solid;
+  border-width: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#stats:hover {
+  background-color: rgb(200, 80, 204);
 }
 
 #playerRed {

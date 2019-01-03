@@ -20,7 +20,8 @@ class Grid5 extends Component {
   render () {
     let grid = this.state.grid5;
     return (
-      <React.Fragment>
+      <div style={{fontSize: '30px', textAlign: 'center'}}>
+        Stage 1
         <table>
           <tbody>
             <tr id="white5">
@@ -60,7 +61,7 @@ class Grid5 extends Component {
           : <div />
           }
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

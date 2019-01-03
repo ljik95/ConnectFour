@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './table';
 import store, { reset } from '../store';
+import { Link } from 'react-router-dom';
 
 class ConnectFour extends Component {
   constructor () {
@@ -29,6 +30,9 @@ class ConnectFour extends Component {
             Player {this.state.currentColor === 'red' ? 'Red' : 'Yellow'}'s turn
             <Table />
             <button id="resetButton" type="button" onClick={this.handleClick}>Reset</button>
+            <div id="stats">
+              <Link to="/stats" style={{ textDecoration: 'none', color: 'black' }}>Statistics</Link>
+            </div>
           </div> :
           <div>
             <img id="winnerImg" src="https://pbs.twimg.com/profile_images/427475930/winner.jpg" /> <br />
